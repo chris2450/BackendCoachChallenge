@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 var userSchema = new mongoose.Schema({
@@ -39,6 +39,7 @@ userSchema.pre('save', function (next) {
 
 //Methods
 userSchema.methods.verifyPassword = function (password) {
+    console.log(password, this.password)
     return bcrypt.compareSync(password, this.password);
 };
 

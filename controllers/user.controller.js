@@ -25,6 +25,7 @@ module.exports.register = (req,res,next) =>{
 }
 
 module.exports.authenticate = (req, res, next) => {
+    console.log(req);
     // call for passport authentication
     passport.authenticate('local', (err, user, info) => {       
         // error from passport middleware
@@ -34,7 +35,6 @@ module.exports.authenticate = (req, res, next) => {
         // unknown user or wrong password
         else return res.status(404).json(info);
     })(req, res);
-
 }
 
 module.exports.userProfile = (req, res, next) =>{
@@ -47,3 +47,4 @@ module.exports.userProfile = (req, res, next) =>{
         }
     );
 }
+
